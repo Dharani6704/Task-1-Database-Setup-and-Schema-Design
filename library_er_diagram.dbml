@@ -1,0 +1,25 @@
+Table Author {
+  author_id int [pk, increment]
+  name varchar
+}
+
+Table Book {
+  book_id int [pk, increment]
+  title varchar
+  published_year int
+  author_id int [ref: > Author.author_id]
+}
+
+Table Member {
+  member_id int [pk, increment]
+  name varchar
+  email varchar [unique]
+}
+
+Table Loan {
+  loan_id int [pk, increment]
+  book_id int [ref: > Book.book_id]
+  member_id int [ref: > Member.member_id]
+  loan_date date
+  return_date date
+}
